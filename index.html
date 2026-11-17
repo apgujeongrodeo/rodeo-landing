@@ -439,6 +439,7 @@ footer .copy{margin-top:8px}
 .ck-row input{margin-top:4px;width:18px;height:18px;accent-color:var(--gold);flex:none}
 .ck-row b{color:var(--ivory);margin-right:6px}
 .ck-row span{color:var(--on-dark-muted)}
+.ck-s{display:block;margin-top:2px;font-size:12px;line-height:1.55;opacity:.8}
 .ck-btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 .ck-b{flex:1 1 120px;min-height:44px;padding:0 16px;border-radius:999px;font:inherit;font-weight:700;font-size:14.5px;cursor:pointer;border:1.5px solid var(--gold);background:var(--gold);color:var(--espresso)}
 .ck-b.ck-line{background:transparent;color:var(--ivory);border-color:rgba(245,241,232,.5)}
@@ -804,11 +805,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="ck" id="ck" hidden>
   <section class="ck-in" role="dialog" aria-modal="false" aria-labelledby="ck-t" aria-describedby="ck-d">
     <p class="ck-t" id="ck-t">쿠키 및 추적 기술 사용 동의</p>
-    <p class="ck-d" id="ck-d">방문 통계(Google 애널리틱스)와 광고 성과 측정(Meta 픽셀)에 쿠키 등을 사용하려고 합니다. 동의하지 않아도 사이트 이용과 상담 신청에는 제한이 없으며, 선택은 화면 아래 ‘쿠키 설정’에서 언제든 바꿀 수 있습니다. <a href="/privacy">개인정보 처리방침</a></p>
+    <p class="ck-d" id="ck-d">방문 통계(Google 애널리틱스)와 광고 성과 측정(Meta 픽셀)에 쿠키 등을 사용하려고 합니다. 동의하지 않아도(거부해도) 사이트 이용과 상담 신청에는 제한이 없으며, 선택은 화면 아래 ‘쿠키 설정’에서 언제든 바꿀 수 있습니다. <a href="/privacy">개인정보 처리방침</a></p>
     <div class="ck-opts" id="ck-opts" hidden>
       <label class="ck-row"><input type="checkbox" checked disabled><span><b>필수</b>사이트 표시와 동의 선택 저장(브라우저 저장소)</span></label>
-      <label class="ck-row"><input type="checkbox" id="ck-a"><span><b>분석</b>Google 애널리틱스 방문 통계 (Google 태그 관리자 경유)</span></label>
-      <label class="ck-row"><input type="checkbox" id="ck-m"><span><b>광고</b>Meta 픽셀 광고 성과 측정 및 맞춤형 광고</span></label>
+      <label class="ck-row"><input type="checkbox" id="ck-a"><span><b>분석</b>Google 애널리틱스 방문 통계 (Google 태그 관리자 경유)<small class="ck-s">수집 사업자: Google LLC(미국, 국외 이전) · 항목: 방문 기록, 기기 정보, 쿠키 식별자 · 보유 기간: 14개월</small></span></label>
+      <label class="ck-row"><input type="checkbox" id="ck-m"><span><b>광고</b>Meta 픽셀 광고 성과 측정 및 맞춤형 광고<small class="ck-s">제공받는 자: Meta Platforms, Inc.(미국, 국외 이전) · 항목: 방문 기록, 기기 정보, IP 주소, 쿠키 식별자 · 보유 기간: Meta 정책에 따름</small></span></label>
     </div>
     <div class="ck-btns">
       <button type="button" class="ck-b" data-ck="reject">모두 거부</button>
