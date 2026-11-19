@@ -1,7 +1,7 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="돌리면 개업 선물이 쏟아진다! 커피 기프티콘부터 중개보수 30% 할인까지, 로데오공인중개사무소 개업 행운 룰렛">
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="돌리면 개업 선물이 쏟아진다! 무료 상권분석부터 중개보수 30% 할인까지, 로데오공인중개사무소 개업 행운 룰렛">
 <meta property="og:type" content="website">
 <meta property="og:title" content="🏪 로데오 개업 행운 룰렛 | 로데오공인중개사무소">
-<meta property="og:description" content="휴대폰 1대당 3번의 기회! 돌리면 개업 선물이 쏟아진다 🎉 커피 기프티콘부터 중개보수 30% 할인까지 · ~2027.12.31">
+<meta property="og:description" content="휴대폰 1대당 3번의 기회! 돌리면 개업 선물이 쏟아진다 🎉 무료 상권분석부터 중개보수 30% 할인까지 · ~2027.12.31">
 <meta property="og:url" content="https://rodeo-landing-five.vercel.app/event">
 <meta property="og:image" content="https://rodeo-landing-five.vercel.app/event/og-image.png">
 <link rel="canonical" href="https://rodeo-landing-five.vercel.app/event">
@@ -231,7 +231,7 @@ background:linear-gradient(180deg,#A3162A,#5E0812) padding-box,var(--foil) borde
 <div class="hub" aria-hidden="true"><div><b class="serif">R</b></div></div>
 </div>
 <div class="controls"><button id="spin" class="shine">🎡 룰렛 돌리기</button><button class="secondary soundBtn" id="sound" aria-pressed="true">🔊 소리 켜짐</button></div>
-<p class="muted">휴대폰 1대당 <b>3번</b> 참여할 수 있어요 · 이벤트 기간 ~ 2027년 12월 31일</p>
+<p class="muted">휴대폰 1대당 <b>3번</b>, 매번 <b>다른 경품</b>이 나와요 · 이벤트 기간 ~ 2027년 12월 31일</p>
 </section>
 
 <section class="panel">
@@ -253,7 +253,7 @@ background:linear-gradient(180deg,#A3162A,#5E0812) padding-box,var(--foil) borde
 <div class="steps"><span>① 쿠폰 화면 캡처</span><span>→ ② 상담 신청</span><span>→ ③ 상담 때 쿠폰 사용</span></div>
 <p class="pointer" id="pointer" hidden>👇 여기를 눌러 상담 신청!</p>
 <div class="cta" id="cta"><a class="form shine" id="formBtn" href="https://docs.google.com/forms/d/1dmdT5KLeAKSEVj9ZCu2Iv2HRBjGR17055YllAvD0_Ag/viewform" target="_blank" rel="noopener">📝 상담 신청하고 쿠폰 쓰기<small>구글폼 1분 작성</small></a><a class="call" href="tel:025472442">📞 전화 상담<small>02-547-2442</small></a></div>
-<div class="note">📸 <b>쿠폰 화면을 캡처</b>해 두셨다가 상담할 때 보여주세요. 경품은 상담·계약 진행 시 제공되며, 제휴 혜택과 중개보수 할인 한도 등 세부 조건은 사무소에서 안내해 드립니다. 이벤트·쿠폰 유효기간은 <b>2027년 12월 31일까지</b>이며, 휴대폰 1대당 3회 참여할 수 있습니다. 경품은 사무소 사정에 따라 변경되거나 조기 종료될 수 있습니다.</div>
+<div class="note">📸 <b>쿠폰 화면을 캡처</b>해 두셨다가 상담할 때 보여주세요. 경품은 상담·계약 진행 시 제공되며, 제휴 혜택과 중개보수 할인 한도 등 세부 조건은 사무소에서 안내해 드립니다. 이벤트·쿠폰 유효기간은 <b>2027년 12월 31일까지</b>이며, 휴대폰 1대당 3회 참여할 수 있으며, 이미 받은 경품은 다시 나오지 않습니다. 경품은 사무소 사정에 따라 변경되거나 조기 종료될 수 있습니다.</div>
 </section>
 <footer class="serif">✦ RODEO REAL ESTATE · SINCE 1982 ✦</footer>
 </main>
@@ -275,33 +275,34 @@ background:linear-gradient(180deg,#A3162A,#5E0812) padding-box,var(--foil) borde
 const FORM='https://docs.google.com/forms/d/1dmdT5KLeAKSEVj9ZCu2Iv2HRBjGR17055YllAvD0_Ag/viewform';
 const MAX=3,END=new Date('2028-01-01T00:00:00+09:00').getTime(),KEY='rodeoLuckyRoulette2027';
 const prizes=[
-{name:'커피 기프티콘',label:'☕<br>커피<br>기프티콘',weight:35,bg:'#8E1020',fg:'#F6DD96',emoji:'☕',msg:'개업 준비로 바쁜 사장님께 커피 한 잔 쏩니다!<br>상담 신청하시면 기프티콘을 챙겨 드려요.',go:'☕ 지금 바로 커피 쿠폰 받으러 가기!'},
-{name:'무료 상권분석 상담',label:'📊<br>무료<br>상권분석',weight:25,bg:'#FBF3E2',fg:'#3B2A1B',emoji:'📊',msg:'압구정로데오 상권, 50년 현장 경험으로<br>유동인구·임대료·업종까지 무료로 분석해 드려요.',go:'📊 지금 바로 무료 분석 예약하기!'},
-{name:'개업축하 공기정화식물',label:'🌿<br>개업축하<br>공기정화식물',weight:20,bg:'#4E3420',fg:'#F6DD96',emoji:'🌿',msg:'새 매장에 초록 행운을!<br>계약하시면 개업 날 공기정화식물을 보내 드려요.',go:'🌿 지금 바로 개업 선물 신청하기!'},
-{name:'상가 입주청소 할인',label:'🧹<br>상가<br>입주청소 할인',weight:10,bg:'#EAD6AC',fg:'#3B2A1B',emoji:'🧹',msg:'오픈 전 반짝반짝하게!<br>제휴 업체 상가 입주청소를 할인가로 연결해 드려요.',go:'🧹 지금 바로 청소 할인 쿠폰 쓰러 가기!'},
-{name:'인테리어 무료 견적 + 할인',label:'🛠<br>인테리어<br>견적+할인',weight:8,bg:'#6A0A16',fg:'#F6DD96',emoji:'🛠',msg:'매장 인테리어 고민 끝!<br>제휴 업체 무료 견적에 할인 혜택까지 챙겨 드려요.',go:'🛠 지금 바로 인테리어 견적 받으러 가기!'},
+{name:'무료 상권분석 상담',label:'📊<br>무료<br>상권분석',weight:40,bg:'#8E1020',fg:'#F6DD96',emoji:'📊',msg:'압구정로데오 상권, 50년 현장 경험으로<br>유동인구·임대료·업종까지 무료로 분석해 드려요.',go:'📊 지금 바로 무료 분석 예약하기!'},
+{name:'개업축하 공기정화식물',label:'🌿<br>개업축하<br>공기정화식물',weight:30,bg:'#EAD6AC',fg:'#3B2A1B',emoji:'🌿',msg:'새 매장에 초록 행운을!<br>계약하시면 개업 날 공기정화식물을 보내 드려요.',go:'🌿 지금 바로 개업 선물 신청하기!'},
+{name:'상가 입주청소 할인',label:'🧹<br>상가<br>입주청소 할인',weight:16,bg:'#4E3420',fg:'#F6DD96',emoji:'🧹',msg:'오픈 전 반짝반짝하게!<br>제휴 업체 상가 입주청소를 할인가로 연결해 드려요.',go:'🧹 지금 바로 청소 할인 쿠폰 쓰러 가기!'},
+{name:'인테리어 무료 견적 + 할인',label:'🛠<br>인테리어<br>견적+할인',weight:12,bg:'#FBF3E2',fg:'#3B2A1B',emoji:'🛠',msg:'매장 인테리어 고민 끝!<br>제휴 업체 무료 견적에 할인 혜택까지 챙겨 드려요.',go:'🛠 지금 바로 인테리어 견적 받으러 가기!'},
 {name:'중개보수 30% 할인',label:'👑<br>중개보수<br>30% 할인',weight:2,bg:'#D4A64A',fg:'#3B1A08',emoji:'👑',msg:'단 2% 확률의 대박 당첨!<br>계약 시 중개보수를 30% 할인해 드려요.<br><small>(할인 한도 등 세부 조건은 상담 시 안내)</small>',go:'👑 지금 당장 30% 할인 쿠폰 쓰러 가기!',jackpot:true}];
+const N=prizes.length,SEG=360/N;
 const $=id=>document.getElementById(id);
 const wheel=$('wheel'),spin=$('spin'),out=$('result'),hist=$('history');let current=0,busy=false;
 // 룰렛 그리기
-wheel.style.background='repeating-conic-gradient(#F6DD96 0 .5deg,#8A6420 .5deg .9deg,transparent .9deg 60deg),'+
+wheel.style.background='repeating-conic-gradient(#F6DD96 0 .5deg,#8A6420 .5deg .9deg,transparent .9deg '+SEG+'deg),'+
  'radial-gradient(circle,rgba(255,255,255,.14) 0 22%,rgba(255,255,255,0) 45%,rgba(0,0,0,.12) 100%),'+
- 'conic-gradient(from 300deg,rgba(255,246,212,0) 0deg,rgba(255,246,212,.55) 30deg,rgba(255,246,212,0) 60deg,transparent 60deg 360deg),'+
- 'conic-gradient('+prizes.map((p,i)=>`${p.bg} ${i*60}deg ${(i+1)*60}deg`).join(',')+')';
-prizes.forEach((p,i)=>{const a=i*60+30,r=32,s=document.createElement('span');s.innerHTML=p.label;s.style.color=p.fg;s.style.left=(50+r*Math.sin(a*Math.PI/180))+'%';s.style.top=(50-r*Math.cos(a*Math.PI/180))+'%';s.style.transform=`translate(-50%,-50%) rotate(${a}deg)`;
+ 'conic-gradient(from '+(360-SEG)+'deg,rgba(255,246,212,0) 0deg,rgba(255,246,212,.55) '+SEG/2+'deg,rgba(255,246,212,0) '+SEG+'deg,transparent '+SEG+'deg 360deg),'+
+ 'conic-gradient('+prizes.map((p,i)=>`${p.bg} ${i*SEG}deg ${(i+1)*SEG}deg`).join(',')+')';
+prizes.forEach((p,i)=>{const a=i*SEG+SEG/2,r=32,s=document.createElement('span');s.innerHTML=p.label;s.style.color=p.fg;s.style.left=(50+r*Math.sin(a*Math.PI/180))+'%';s.style.top=(50-r*Math.cos(a*Math.PI/180))+'%';s.style.transform=`translate(-50%,-50%) rotate(${a}deg)`;
  s.style.textShadow=(p.fg==='#F6DD96')?'0 1px 0 #2A0A05,0 2px 0 #1A0603,0 0 8px rgba(255,214,120,.45)':'0 1px 0 rgba(255,255,255,.9),0 2px 3px rgba(110,76,18,.35)';wheel.appendChild(s)});
 const box=$('wheelBox');for(let k=0;k<24;k++){const a=k*15*Math.PI/180,b=document.createElement('i');b.className='bulb'+(k%2?' alt':'');b.style.left=(50+54*Math.sin(a))+'%';b.style.top=(50-54*Math.cos(a))+'%';b.style.zIndex=2;box.appendChild(b)}
 function sparkle(parent,n,area){for(let k=0;k<n;k++){const s=document.createElement('i');s.className='spark';s.style.left=(area.x+Math.random()*area.w)+'%';s.style.top=(area.y+Math.random()*area.h)+'%';s.style.setProperty('--s',(10+Math.random()*16)+'px');s.style.setProperty('--d',(2+Math.random()*2.2)+'s');s.style.setProperty('--delay',(-Math.random()*4)+'s');parent.appendChild(s)}}
 sparkle($('head'),16,{x:8,y:0,w:84,h:70});sparkle(box,6,{x:-8,y:-8,w:116,h:116});
 $('weights').innerHTML=prizes.map(p=>`<div class="row"><span><i class="dot" style="background:${p.bg}"></i>${p.name}</span><strong>${p.weight}%</strong></div>`).join('');
-function choosePrize(){let n=Math.random()*prizes.reduce((s,p)=>s+p.weight,0);for(let i=0;i<prizes.length;i++){n-=prizes[i].weight;if(n<0)return i;}return prizes.length-1}
+function choosePrize(){const won=new Set(state.wins.map(w=>w.name));let pool=prizes.map((p,i)=>i).filter(i=>!won.has(prizes[i].name));if(!pool.length)pool=prizes.map((p,i)=>i);
+ let n=Math.random()*pool.reduce((s,i)=>s+prizes[i].weight,0);for(const i of pool){n-=prizes[i].weight;if(n<0)return i}return pool[pool.length-1]}
 
 // ===== 참여 기록 (휴대폰 1대당 3회) =====
 let state={spins:0,wins:[]};
 try{const v=JSON.parse(localStorage.getItem(KEY)||'null');if(v&&Array.isArray(v.wins))state={spins:Math.min(+v.spins||0,MAX),wins:v.wins}}catch(e){}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}}
 function newCode(){const c='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';let s='';for(let k=0;k<6;k++)s+=c[Math.floor(Math.random()*c.length)];return 'RODEO-'+s}
-const byName=n=>prizes.find(p=>p.name===n)||prizes[0];
+const byName=n=>prizes.find(p=>p.name===n)||{name:n,emoji:'🎁',msg:'상담 시 경품을 안내해 드려요.',go:'🎁 지금 바로 쿠폰 쓰러 가기!'};
 const esc=t=>String(t).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
 const ended=()=>Date.now()>=END;
 function render(){
@@ -376,8 +377,8 @@ function doSpin(){
  if(busy||ended())return;
  if(state.spins>=MAX){$('coupon').scrollIntoView({behavior:'smooth'});return}
  busy=true;spin.disabled=true;spin.textContent='🎡 돌아가는 중...';audio();show('✨ 두근두근... 회전 중!');
- const i=choosePrize();const aim=360-(i*60+30);const delta=(aim-(current%360)+360)%360;current+=1800+delta;wheel.style.transform=`rotate(${current}deg)`;
- let prev=angle(),total=0,run=true;(function loop(){if(!run)return;const a=angle(),d=(a-prev+360)%360;prev=a;const before=total;total+=d;if(Math.floor(total/60)>Math.floor(before/60))tick();requestAnimationFrame(loop)})();
+ const i=choosePrize();const aim=360-(i*SEG+SEG/2);const delta=(aim-(current%360)+360)%360;current+=1800+delta;wheel.style.transform=`rotate(${current}deg)`;
+ let prev=angle(),total=0,run=true;(function loop(){if(!run)return;const a=angle(),d=(a-prev+360)%360;prev=a;const before=total;total+=d;if(Math.floor(total/SEG)>Math.floor(before/SEG))tick();requestAnimationFrame(loop)})();
  setTimeout(()=>{run=false;const p=prizes[i];state.spins++;const w={name:p.name,code:newCode(),at:Date.now()};state.wins.unshift(w);save();
   show('🎉 '+p.name+' 당첨!',true);burst();busy=false;render();
   if(p.jackpot){const f=document.createElement('div');f.className='flash';document.body.appendChild(f);setTimeout(()=>f.remove(),1000)}
