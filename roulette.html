@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0c1b2b">
+  <title>로데오공인중개사무소 | 사장님의 상권 행운 룰렛</title>
+  <style>
+    :root {
+      --navy:#0c1b2b; --navy-mid:#172d40; --ink:#17283b;
+      --gold:#c8a56d; --gold-light:#e7d6b3; --cream:#f9f6ef;
+      --muted:#718094; --line:#e6e4df; --white:#fff;
+    }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); font-family:'Malgun Gothic','Apple SD Gothic Neo',system-ui,sans-serif; background:var(--navy); }
+    button { font:inherit; cursor:pointer; }
+    button:focus-visible { outline:3px solid #e9c27a; outline-offset:3px; }
+    button:disabled { cursor:not-allowed; opacity:.53; }
+    .page { min-height:100vh; background:radial-gradient(circle at 78% 5%,rgba(200,165,109,.12),transparent 28%),linear-gradient(180deg,#101f30 0,#0b1827 54%,#0c1b2b 100%); padding-bottom:56px; }
+    .container { width:min(1140px,calc(100% - 36px)); margin:0 auto; }
+    .masthead { display:flex; justify-content:space-between; align-items:center; padding:24px 0 20px; gap:15px; border-bottom:1px solid rgba(231,214,179,.19); }
+    .brand { display:flex; align-items:center; gap:13px; color:#fff; }
+    .mark { width:48px; height:48px; display:grid; place-items:center; border:1px solid var(--gold); border-radius:3px; color:var(--gold-light); font:35px/1 Georgia,serif; letter-spacing:-4px; padding-right:3px; }
+    .brand-main { font-size:16px; font-weight:850; letter-spacing:-.045em; }
+    .brand-small { margin-top:4px; font-size:10px; letter-spacing:.22em; color:var(--gold-light); font-weight:650; }
+    .tag { border:1px solid rgba(213,179,126,.45); border-radius:2px; padding:9px 11px; color:#e7d8c0; font-size:11px; letter-spacing:.1em; white-space:nowrap; }
+    .intro { padding:46px 0 32px; text-align:center; color:#fff; }
+    .eyebrow { display:flex; justify-content:center; align-items:center; gap:12px; font:12px Georgia,serif; letter-spacing:.25em; color:#e2c99e; }
+    .eyebrow:before,.eyebrow:after { content:''; display:block; width:29px; height:1px; background:#b99966; }
+    .intro h1 { font-size:clamp(30px,5.7vw,54px); line-height:1.25; font-weight:760; letter-spacing:-.065em; margin:13px auto 13px; }
+    .intro h1 em { font-style:normal; color:#e9cb96; }
+    .intro p { color:#c8ced7; font-size:15px; line-height:1.85; margin:0 auto; max-width:710px; word-break:keep-all; }
+    .content { display:grid; grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr); gap:20px; }
+    .panel { background:var(--cream); border:1px solid #f4efe4; border-radius:13px; padding:26px; box-shadow:0 20px 55px rgba(0,0,0,.14); min-width:0; }
+    .wheel-panel { text-align:center; }
+    .panel-head { display:flex; align-items:center; justify-content:space-between; gap:10px; text-align:left; border-bottom:1px solid var(--line); padding-bottom:16px; margin-bottom:24px; }
+    .panel-head .kicker { color:#9c7846; letter-spacing:.11em; font-size:11px; font-weight:750; }
+    .panel-head .no { font-size:12px; color:#8a8e96; }
+    .panel h2 { font-size:22px; letter-spacing:-.055em; line-height:1.35; margin:6px 0 0; }
+    .wheel-wrap { max-width:432px; width:100%; aspect-ratio:1; margin:6px auto 22px; position:relative; padding:9px; }
+    .wheel-shadow { position:absolute; inset:0; border-radius:50%; background:linear-gradient(135deg,#f7deb1,#ad8244 49%,#ffefce 100%); box-shadow:0 13px 33px rgba(24,42,57,.27),0 0 0 5px rgba(200,165,109,.11); }
+    .wheel { position:relative; width:100%; height:100%; border-radius:50%; overflow:hidden; border:7px solid #fff9ec; background:conic-gradient(from 0deg,#e4c994 0 60deg,#173449 60deg 120deg,#f1e5cb 120deg 180deg,#b88b54 180deg 240deg,#233e51 240deg 300deg,#e7d9bd 300deg 360deg); transition:transform 4s cubic-bezier(.11,.68,.12,1); will-change:transform; }
+    .wheel:after { content:''; position:absolute; inset:0; border-radius:50%; background:repeating-conic-gradient(from 0deg,rgba(255,255,255,.40) 0deg 0.6deg,transparent .6deg 60deg); pointer-events:none; }
+    .wheel-label { display:flex; flex-direction:column; align-items:center; justify-content:center; position:absolute; width:92px; height:60px; transform:translate(-50%,-50%); text-align:center; font-size:13px; line-height:1.35; font-weight:850; letter-spacing:-.05em; color:#11283c; word-break:keep-all; z-index:2; }
+    .wheel-label.light { color:#fff9ee; }
+    .wheel-label small { display:block; font:650 9px/1.6 Georgia,serif; letter-spacing:.05em; opacity:.83; }
+    .wheel-center { position:absolute; width:85px; aspect-ratio:1; top:50%; left:50%; transform:translate(-50%,-50%); border-radius:50%; border:6px solid #e5c996; background:#0d2234; color:#f3dbad; display:flex; flex-direction:column; align-items:center; justify-content:center; box-shadow:0 3px 14px #0b1a2b6a; z-index:3; pointer-events:none; }
+    .wheel-center b { font:normal 34px/1 Georgia,serif; letter-spacing:-.1em; margin-right:4px; }
+    .wheel-center span { font-size:8px; letter-spacing:.21em; margin-top:2px; }
+    .pointer { position:absolute; left:50%; top:-10px; transform:translateX(-50%); z-index:5; filter:drop-shadow(0 2px 2px #152b407a); width:0; height:0; border-left:18px solid transparent; border-right:18px solid transparent; border-top:38px solid #c79c5b; }
+    .pointer:after { content:''; position:absolute; top:-37px; left:-9px; width:18px; height:6px; background:#f5e0b4; clip-path:polygon(0 0,100% 0,50% 100%); }
+    .actions { display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin:16px 0 0; }
+    .btn-primary { color:#fff9ec; background:linear-gradient(125deg,#233b50,#0b1b2b); border:1px solid #4e5360; border-radius:5px; font-size:16px; padding:16px 29px; font-weight:800; letter-spacing:-.04em; min-width:192px; box-shadow:0 7px 18px #11233925; }
+    .btn-primary:hover:enabled { filter:brightness(1.18); }
+    .btn-secondary { background:transparent; color:#637486; border:1px solid #cbd0d1; border-radius:5px; padding:15px 20px; font-size:13px; font-weight:750; }
+    .btn-secondary:hover:enabled { background:#ece9e2; }
+    .micro { margin:17px 0 0; text-align:center; color:#6c7a86; font-size:11px; line-height:1.65; }
+    .result-heading { display:flex; justify-content:space-between; align-items:baseline; gap:8px; }
+    .result-heading h2 { margin:5px 0 18px; }
+    .result-box { position:relative; overflow:hidden; min-height:190px; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:25px 15px; text-align:center; border:1px solid #decaa6; background:radial-gradient(circle at 50% 0,rgba(230,209,171,.4),transparent 70%),#fffdf7; border-radius:8px; }
+    .result-box.win { border-color:#c49d60; box-shadow:inset 0 0 0 2px rgba(217,182,117,.1); }
+    .result-box.vip { background:radial-gradient(circle at 50% 0,rgba(225,186,108,.45),transparent 70%),#fff8e9; }
+    .result-pre { color:#ad8347; font:11px Georgia,serif; font-weight:700; letter-spacing:.23em; margin-bottom:9px; }
+    .result-title { color:#172d40; font-size:24px; line-height:1.3; letter-spacing:-.07em; font-weight:850; word-break:keep-all; }
+    .result-copy { color:#738091; font-size:12px; margin-top:10px; line-height:1.65; max-width:315px; word-break:keep-all; }
+    .result-box.vip .result-title { color:#8e6126; }
+    .stats { display:grid; grid-template-columns:repeat(2,1fr); gap:9px; margin-top:13px; }
+    .stat { background:#fff; border:1px solid var(--line); border-radius:6px; padding:12px; }
+    .stat-label { display:block; color:#8b94a0; font-size:11px; }
+    .stat-val { font-size:20px; font-weight:850; color:#22384b; margin-top:5px; font-variant-numeric:tabular-nums; }
+    .subsection { margin-top:23px; padding-top:20px; border-top:1px solid var(--line); }
+    .subsection h3 { margin:0 0 12px; font-size:15px; letter-spacing:-.04em; }
+    .prob-row { display:grid; grid-template-columns:minmax(0,1fr) 58px; align-items:center; gap:15px; padding:8px 0; font-size:12px; }
+    .prob-row + .prob-row { border-top:1px solid #ebe8e0; }
+    .prob-label { display:flex; align-items:center; gap:8px; font-weight:680; }
+    .dot { width:8px; height:8px; flex:none; border-radius:50%; background:var(--gold); }
+    .prob-val { text-align:right; font-weight:800; font-variant-numeric:tabular-nums; color:#263d51; }
+    .history { counter-reset:record; list-style:none; padding:0; margin:0; max-height:185px; overflow:auto; }
+    .history li { counter-increment:record; display:flex; justify-content:space-between; align-items:center; gap:10px; border-bottom:1px solid #ebe8e0; padding:8px 0; font-size:12px; }
+    .history li:before { content:counter(record,decimal-leading-zero); color:#b78e55; font:12px Georgia,serif; margin-right:5px; }
+    .history li .h-name { margin-right:auto; }
+    .history li .h-time { color:#8e98a1; font-size:10px; white-space:nowrap; }
+    .empty { color:#8996a2; font-size:12px; padding:6px 0; }
+    .notice { border-left:3px solid #c6a16e; background:#f2ecdf; padding:13px 14px; font-size:11px; line-height:1.8; color:#73654f; margin-top:24px; word-break:keep-all; }
+    .footer { display:flex; justify-content:space-between; gap:15px; flex-wrap:wrap; color:#8b9aa8; padding-top:25px; font-size:11px; letter-spacing:.02em; }
+    .footer b { color:#d1b588; font-weight:650; }
+    .confetti { position:absolute; pointer-events:none; z-index:6; width:7px; height:12px; top:-20px; left:var(--x); background:var(--color); transform:rotate(var(--rot)); animation:fall var(--dur) ease-out both; }
+    @keyframes fall { from { transform:translateY(-10px) rotate(0deg); opacity:1; } to {transform:translateY(240px) rotate(450deg); opacity:0;} }
+    @media(max-width:850px) { .content { grid-template-columns:1fr; } .wheel-wrap { max-width:410px; } .intro { padding:35px 0 25px; } }
+    @media(max-width:480px) { .container{width:min(100% - 24px,1140px)} .masthead{padding:17px 0} .mark{height:39px;width:39px;font-size:28px} .brand-main{font-size:13px}.brand-small{font-size:8px}.tag{font-size:9px;padding:7px 8px}.intro h1{font-size:32px}.intro p{font-size:13px}.panel{padding:18px}.wheel-wrap{margin-bottom:14px}.wheel-label{font-size:11px;width:76px;height:53px}.wheel-label small{font-size:8px}.wheel-center{width:68px;border-width:4px}.wheel-center b{font-size:27px}.btn-primary{min-width:160px;padding:14px 20px}.btn-secondary{padding:13px 12px} .result-title{font-size:21px} }
+    @media(prefers-reduced-motion:reduce) { .wheel{transition-duration:.3s;} .confetti{animation-duration:.15s!important;} }
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="container">
+    <header class="masthead">
+      <div class="brand" aria-label="로데오공인중개사무소">
+        <div class="mark" aria-hidden="true">R</div>
+        <div><div class="brand-main">로데오공인중개사무소</div><div class="brand-small">SINCE 1982 · APGUJEONG RODEO</div></div>
+      </div>
+      <div class="tag">MARKETING DEMO</div>
+    </header>
+
+    <section class="intro">
+      <div class="eyebrow">RODEO LUCKY EXPERIENCE</div>
+      <h1>사장님의 다음 가게,<br><em>어디에서 빛날까요?</em></h1>
+      <p>김태욱 공인중개사가 준비한 상권 탐색 이벤트.<br>룰렛을 돌리고 내 가게에 필요한 다음 힌트를 만나보세요.</p>
+    </section>
+
+    <main class="content">
+      <section class="panel wheel-panel" aria-labelledby="wheel-heading">
+        <div class="panel-head"><div><div class="kicker">01 · LUCKY SPIN</div><h2 id="wheel-heading">상권 행운의 룰렛</h2></div><span class="no">6 SPECIAL CARDS</span></div>
+        <div class="wheel-wrap">
+          <div class="wheel-shadow" aria-hidden="true"></div>
+          <div class="pointer" aria-hidden="true"></div>
+          <div class="wheel" id="wheel" role="img" aria-label="6가지 상권 혜택이 적힌 룰렛">
+            <span class="wheel-label" style="left:67%;top:20.5%"><small>LUCKY 01</small>입지<br>체크리스트</span>
+            <span class="wheel-label light" style="left:84%;top:50%"><small>LUCKY 02</small>상권<br>성향 진단</span>
+            <span class="wheel-label" style="left:67%;top:79.5%"><small>LUCKY 03</small>업종별<br>상권 가이드</span>
+            <span class="wheel-label" style="left:33%;top:79.5%"><small>LUCKY 04</small>맞춤 매물<br>조건표</span>
+            <span class="wheel-label light" style="left:16%;top:50%"><small>SPECIAL 05</small>1:1 상권<br>심층 상담</span>
+            <span class="wheel-label" style="left:33%;top:20.5%"><small>VIP 06</small>시크릿<br>상권 전략</span>
+          </div>
+          <div class="wheel-center" aria-hidden="true"><b>R</b><span>RODEO</span></div>
+        </div>
+        <div class="actions">
+          <button id="spin" class="btn-primary" type="button">✦ 나의 상권 운세 뽑기</button>
+          <button id="reset" class="btn-secondary" type="button">기록 초기화</button>
+        </div>
+        <p class="micro">한 번 누르면 약 4초간 회전합니다. 당첨 결과와 화살표가 가리키는 칸이 일치해요.<br>룰렛 칸 크기는 같지만 당첨 확률은 경품별로 다릅니다.</p>
+      </section>
+
+      <section class="panel" aria-labelledby="result-heading">
+        <div class="panel-head"><div><div class="kicker">02 · YOUR RESULT</div><h2 id="result-heading">오늘의 상권 행운</h2></div><span class="no">RODEO REALTY</span></div>
+        <div id="result" class="result-box" role="status" aria-live="polite" aria-atomic="true">
+          <div id="result-pre" class="result-pre">READY TO SPIN?</div>
+          <div id="result-title" class="result-title">좋은 자리는<br>좋은 질문에서 시작됩니다.</div>
+          <div id="result-copy" class="result-copy">왼쪽 룰렛의 버튼을 누르고 오늘의 상권 힌트를 확인하세요.</div>
+        </div>
+        <div class="stats">
+          <div class="stat"><span class="stat-label">누적 참여 횟수</span><div class="stat-val" id="count">0회</div></div>
+          <div class="stat"><span class="stat-label">현재 상태</span><div class="stat-val" id="status">도전 전</div></div>
+        </div>
+        <div class="subsection">
+          <h3>당첨 카드 &amp; 설정 확률</h3>
+          <div id="weights"></div>
+        </div>
+        <div class="subsection">
+          <h3>최근 당첨 기록</h3>
+          <ol id="history" class="history"><li class="empty">아직 기록이 없습니다.</li></ol>
+        </div>
+        <div class="notice">※ 이 페이지는 <strong>마케팅 수업용 시연 게임</strong>입니다. 표시된 진단·상담·가이드는 아직 실제 경품이나 예약 가능한 서비스가 아닙니다. 공개 이벤트로 활용하기 전에 제공 범위·대상·기간·이용 조건을 확정하세요. 개인정보 수집, 외부 전송, 결제, 실제 쿠폰 발행 기능은 없습니다.</div>
+      </section>
+    </main>
+    <footer class="footer"><span><b>로데오공인중개사무소</b> · 상권을 아는 깊이</span><span>CONCEPT DEMO · 기본 실습 룰렛을 바탕으로 제작</span></footer>
+  </div>
+</div>
+<script>
+  'use strict';
+  // 원본의 6개 경품 확률(35/25/20/10/8/2), 확률 추첨·회전·당첨 기록·초기화 구조를 유지했습니다.
+  const prizes = [
+    {name:'입지 체크리스트', weight:35, desc:'계약 전에 확인해야 할 가시성·동선·층수·관리비 핵심 질문 카드', code:'LUCKY CARD 01'},
+    {name:'상권 성향 진단', weight:25, desc:'내 업종과 운영 방식에 어울리는 상권 특성을 생각해 보는 진단 가이드', code:'LUCKY CARD 02'},
+    {name:'업종별 상권 가이드', weight:20, desc:'카페·식음료·뷰티·병의원·사무실 등 업종별 입지 체크 포인트', code:'LUCKY CARD 03'},
+    {name:'맞춤 매물 조건표', weight:10, desc:'예산·면적·희망층·무권리 여부까지 빠짐없이 정리하는 조건표', code:'SPECIAL CARD 04'},
+    {name:'김태욱 1:1 상권 심층 상담', weight:8, desc:'관심 업종과 희망 입지의 질문을 정리해 보는 상담 콘셉트', code:'SPECIAL CARD 05'},
+    {name:'1등! VIP 시크릿 상권 전략', weight:2, desc:'상권 성공 사례의 핵심 의사결정을 살펴보고 내 업종에 맞춰 입지 전략을 점검하는 콘셉트', code:'VIP GRAND PRIZE'}
+  ];
+  const wheel=document.getElementById('wheel');
+  const spin=document.getElementById('spin');
+  const reset=document.getElementById('reset');
+  const out=document.getElementById('result');
+  const resultPre=document.getElementById('result-pre');
+  const resultTitle=document.getElementById('result-title');
+  const resultCopy=document.getElementById('result-copy');
+  const hist=document.getElementById('history');
+  let current=0, count=0, log=[], spinning=false;
+  const totalWeight=prizes.reduce((s,p)=>s+p.weight,0);
+  document.getElementById('weights').innerHTML=prizes.map(p=>
+    `<div class="prob-row"><div class="prob-label"><span class="dot" aria-hidden="true"></span>${p.name}</div><div class="prob-val">${p.weight}%</div></div>`
+  ).join('');
+
+  function choosePrize(){
+    const total=prizes.reduce((sum,p)=>sum+p.weight,0);
+    if (total!==100) throw new Error('경품 확률의 합계가 100%가 아닙니다.');
+    let number=Math.random()*total;
+    for(let i=0;i<prizes.length;i++){
+      number-=prizes[i].weight;
+      if(number<0) return i;
+    }
+    return prizes.length-1;
+  }
+  function setResult(pre,title,copy,isVip=false){
+    resultPre.textContent=pre;
+    resultTitle.textContent=title;
+    resultCopy.textContent=copy;
+    out.classList.toggle('win',pre.includes('당첨')||pre.includes('CONGRATULATIONS'));
+    out.classList.toggle('vip',isVip);
+  }
+  function displayHistory(){
+    if(!log.length){hist.innerHTML='<li class="empty">아직 기록이 없습니다.</li>';return;}
+    hist.innerHTML=log.slice(0,8).map(item=>
+      `<li><span class="h-name">${item.name}</span><span class="h-time">${item.time}</span></li>`
+    ).join('');
+  }
+  function confetti(){
+    const colors=['#d5b073','#d4c09a','#163249','#f5e7ca'];
+    for(let i=0;i<22;i++){
+      const piece=document.createElement('i');
+      piece.className='confetti';
+      piece.style.setProperty('--x',`${Math.random()*100}%`);
+      piece.style.setProperty('--color',colors[i%colors.length]);
+      piece.style.setProperty('--rot',`${Math.random()*360}deg`);
+      piece.style.setProperty('--dur',`${1.3+Math.random()*.7}s`);
+      out.appendChild(piece);
+      setTimeout(()=>piece.remove(),2200);
+    }
+  }
+  if(totalWeight!==100){
+    spin.disabled=true;
+    setResult('설정 오류','당첨 확률 합계 확인 필요',`현재 확률 합계 ${totalWeight}%. 100%로 수정해 주세요.`);
+  }
+  spin.addEventListener('click',()=>{
+    if(spinning || totalWeight!==100) return;
+    spinning=true;
+    spin.disabled=true;
+    reset.disabled=true;
+    document.getElementById('status').textContent='회전 중';
+    setResult('SPINNING','어떤 상권 행운이 기다릴까요?','잠시 후 오늘의 카드가 공개됩니다.');
+    const index=choosePrize();
+    // 기본 실습처럼 6칸은 같은 각도, 확률은 weight를 통한 비균등 추첨.
+    const sector=360/prizes.length;
+    const aim=360-(index*sector+sector/2);
+    const delta=(aim-(current%360)+360)%360;
+    current+=1800+delta;
+    wheel.style.transform=`rotate(${current}deg)`;
+    const duration=window.matchMedia('(prefers-reduced-motion: reduce)').matches?350:4200;
+    setTimeout(()=>{
+      count++;
+      const prize=prizes[index];
+      log.unshift({name:prize.name,time:new Intl.DateTimeFormat('ko-KR',{hour:'2-digit',minute:'2-digit'}).format(new Date())});
+      document.getElementById('count').textContent=count+'회';
+      document.getElementById('status').textContent='당첨 완료';
+      setResult(index===5?'1등 당첨 · VIP GRAND PRIZE':'CONGRATULATIONS · 당첨!',prize.name,prize.desc,index===5);
+      displayHistory();
+      if(index===5)confetti();
+      spin.disabled=false;
+      reset.disabled=false;
+      spinning=false;
+    },duration);
+  });
+  reset.addEventListener('click',()=>{
+    if(spinning)return;
+    count=0;
+    log=[];
+    document.getElementById('count').textContent='0회';
+    document.getElementById('status').textContent='초기화';
+    setResult('READY TO SPIN?','새로운 상권 행운을 만나보세요.','최근 당첨 기록이 초기화되었습니다.');
+    displayHistory();
+  });
+</script>
+</body>
+</html>
