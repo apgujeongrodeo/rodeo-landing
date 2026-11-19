@@ -2,7 +2,9 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="🏪 로데오 개업 행운 룰렛 | 로데오공인중개사무소">
 <meta property="og:description" content="돌리면 개업 선물이 쏟아진다! 커피 기프티콘부터 중개보수 30% 할인까지. 압구정로데오 상가 전문 SINCE 1982">
-<meta property="og:image" content="https://raw.githubusercontent.com/apgujeongrodeo/rodeo-landing/main/event/og-image.png">
+<meta property="og:url" content="https://rodeo-landing-five.vercel.app/event">
+<meta property="og:image" content="https://rodeo-landing-five.vercel.app/event/og-image.png">
+<link rel="canonical" href="https://rodeo-landing-five.vercel.app/event">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="theme-color" content="#8E1020">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%238E1020' stroke='%23D9B65E' stroke-width='4'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='%23F6DD96' font-family='Georgia,serif' font-weight='700'%3ER%3C/text%3E%3C/svg%3E">
@@ -106,6 +108,16 @@ background:linear-gradient(180deg,#FFF9EA,#F6E6C2);border:2px solid #D9B65E;box-
 .row strong{color:var(--burg)}
 .dot{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:8px;vertical-align:-1px;box-shadow:0 0 0 1.5px #D9B65E}
 .list{padding-left:20px;margin:6px 0 18px}.list li{margin:6px 0;font-size:14px}
+.cta{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.cta a{position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:62px;padding:10px;border-radius:14px;text-decoration:none;font-weight:900;font-size:16px;text-align:center;transition:transform .15s}
+.cta a small{font-size:12px;font-weight:700;opacity:.85}
+.cta a:hover{transform:translateY(-2px)}
+.cta .call{background:linear-gradient(180deg,#C42236,#8A0F1D 55%,#5E0812);color:#F6DD96;border:2px solid #D9B65E;box-shadow:inset 0 2px 0 rgba(255,200,200,.35),0 8px 18px rgba(106,10,22,.28)}
+.cta .form{background:linear-gradient(180deg,#FFF6D4,#E8C46A 55%,#C9972F);color:#3B1A08;border:2px solid #8A6420;box-shadow:inset 0 2px 0 rgba(255,255,255,.6),0 8px 18px rgba(110,76,18,.25)}
+.cta a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.ctaMsg{margin:14px 0 0;font-size:14px;font-weight:800;color:var(--burg);text-align:center}
+.cta.hot a{animation:pulse 1.4s ease-in-out 4}
+@keyframes pulse{50%{transform:scale(1.04);box-shadow:0 0 0 4px rgba(246,221,150,.6),0 0 24px 6px rgba(255,214,120,.6)}}
 .note{background:#F8EED8;border-left:3px solid var(--gold);border-radius:10px;padding:12px 14px;font-size:12.5px;color:#6E5226}
 footer{text-align:center;margin-top:30px;font-size:13px;letter-spacing:.3em;color:var(--gold-d)}
 @media(max-width:760px){.layout{grid-template-columns:1fr}.panel{padding:22px}.wrap{padding:26px 16px 40px}.frame{inset:6px}.wheelBox{max-width:300px}.wheel span{font-size:11px;width:70px}.laurel{display:none}}
@@ -169,13 +181,15 @@ footer{text-align:center;margin-top:30px;font-size:13px;letter-spacing:.3em;colo
 <section class="panel">
 <h2>🎁 나의 개업 행운 결과</h2>
 <div id="result" class="result" aria-live="polite"><span class="wtxt">룰렛을 돌려 개업 행운을 확인하세요!</span></div>
+<p class="ctaMsg" id="ctaMsg">🎁 당첨 경품은 상담 시 바로 안내해 드려요</p>
+<div class="cta" id="cta"><a class="call" href="tel:025472442">📞 전화 상담<small>02-547-2442</small></a><a class="form shine" href="https://docs.google.com/forms/d/1dmdT5KLeAKSEVj9ZCu2Iv2HRBjGR17055YllAvD0_Ag/viewform" target="_blank" rel="noopener">📝 상담 신청<small>간편 신청서 작성</small></a></div>
 <div style="height:16px"></div>
 <div class="row"><span>총 참여 횟수</span><strong id="count">0회</strong></div>
 <h2 style="margin-top:24px">📊 경품별 설정 확률</h2>
 <div id="weights"></div>
 <h2 style="margin-top:24px">🧾 최근 당첨 기록</h2>
 <ol class="list" id="history"><li>아직 기록이 없습니다.</li></ol>
-<div class="note">🎓 실습용 모의 이벤트입니다. 실제 경품 지급·개인정보 수집·결제 기능은 없습니다. 실제로 운영할 때는 경품 이용 조건과 유효기간, 중개보수 할인 한도, 표시·광고 기준을 미리 확인하세요.</div>
+<div class="note">📸 <b>당첨 화면을 캡처</b>해 두셨다가 상담할 때 보여주세요. 경품은 상담·계약 진행 시 제공되며, 제휴 혜택과 중개보수 할인 한도 등 세부 조건은 사무소에서 안내해 드립니다. 경품은 사무소 사정에 따라 변경되거나 조기 종료될 수 있습니다.</div>
 </section></div>
 <footer class="serif">✦ RODEO REAL ESTATE · SINCE 1982 ✦</footer>
 </main><script>
@@ -203,6 +217,6 @@ document.getElementById('weights').innerHTML=prizes.map(p=>`<div class="row"><sp
 function choosePrize(){let n=Math.random()*prizes.reduce((s,p)=>s+p.weight,0);for(let i=0;i<prizes.length;i++){n-=prizes[i].weight;if(n<0)return i;}return prizes.length-1}
 function burst(){for(let k=0;k<26;k++){const s=document.createElement('i');s.className='burst';const a=Math.random()*Math.PI*2,d=60+Math.random()*120;s.style.setProperty('--x',Math.cos(a)*d+'px');s.style.setProperty('--y',Math.sin(a)*d*.6+'px');s.style.animationDelay=Math.random()*.25+'s';out.appendChild(s);setTimeout(()=>s.remove(),1500)}}
 function show(t,win){out.classList.toggle('win',!!win);out.innerHTML=`<span class="wtxt">${t}</span>`}
-spin.addEventListener('click',()=>{spin.disabled=true;show('✨ 회전 중...');const i=choosePrize();const aim=360-(i*60+30);const delta=(aim-(current%360)+360)%360;current+=1800+delta;wheel.style.transform=`rotate(${current}deg)`;setTimeout(()=>{count++;log.unshift(prizes[i].name);show('🎉 '+prizes[i].name+' 당첨!',true);burst();document.getElementById('count').textContent=count+'회';hist.innerHTML=log.slice(0,8).map(x=>`<li>${x}</li>`).join('');spin.disabled=false},4200)});
+spin.addEventListener('click',()=>{spin.disabled=true;show('✨ 회전 중...');const i=choosePrize();const aim=360-(i*60+30);const delta=(aim-(current%360)+360)%360;current+=1800+delta;wheel.style.transform=`rotate(${current}deg)`;setTimeout(()=>{count++;log.unshift(prizes[i].name);show('🎉 '+prizes[i].name+' 당첨!',true);burst();document.getElementById('ctaMsg').textContent='🎉 지금 캡처하고 상담 신청하면 경품을 챙겨 드려요!';const c=document.getElementById('cta');c.classList.remove('hot');void c.offsetWidth;c.classList.add('hot');document.getElementById('count').textContent=count+'회';hist.innerHTML=log.slice(0,8).map(x=>`<li>${x}</li>`).join('');spin.disabled=false},4200)});
 document.getElementById('reset').addEventListener('click',()=>{count=0;log=[];show('기록 초기화 완료');hist.innerHTML='<li>아직 기록이 없습니다.</li>';document.getElementById('count').textContent='0회'});
 </script></body></html>
