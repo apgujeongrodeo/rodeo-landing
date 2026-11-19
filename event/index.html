@@ -275,11 +275,12 @@ background:linear-gradient(180deg,#A3162A,#5E0812) padding-box,var(--foil) borde
 const FORM='https://docs.google.com/forms/d/1dmdT5KLeAKSEVj9ZCu2Iv2HRBjGR17055YllAvD0_Ag/viewform';
 const MAX=3,END=new Date('2028-01-01T00:00:00+09:00').getTime(),KEY='rodeoLuckyRoulette2027';
 const prizes=[
-{name:'무료 상권분석 상담',label:'📊<br>무료<br>상권분석',weight:40,bg:'#8E1020',fg:'#F6DD96',emoji:'📊',msg:'압구정로데오 상권, 50년 현장 경험으로<br>유동인구·임대료·업종까지 무료로 분석해 드려요.',go:'📊 지금 바로 무료 분석 예약하기!'},
-{name:'개업축하 공기정화식물',label:'🌿<br>개업축하<br>공기정화식물',weight:30,bg:'#EAD6AC',fg:'#3B2A1B',emoji:'🌿',msg:'새 매장에 초록 행운을!<br>계약하시면 개업 날 공기정화식물을 보내 드려요.',go:'🌿 지금 바로 개업 선물 신청하기!'},
-{name:'상가 입주청소 할인',label:'🧹<br>상가<br>입주청소 할인',weight:16,bg:'#4E3420',fg:'#F6DD96',emoji:'🧹',msg:'오픈 전 반짝반짝하게!<br>제휴 업체 상가 입주청소를 할인가로 연결해 드려요.',go:'🧹 지금 바로 청소 할인 쿠폰 쓰러 가기!'},
-{name:'인테리어 무료 견적 + 할인',label:'🛠<br>인테리어<br>견적+할인',weight:12,bg:'#FBF3E2',fg:'#3B2A1B',emoji:'🛠',msg:'매장 인테리어 고민 끝!<br>제휴 업체 무료 견적에 할인 혜택까지 챙겨 드려요.',go:'🛠 지금 바로 인테리어 견적 받으러 가기!'},
-{name:'중개보수 30% 할인',label:'👑<br>중개보수<br>30% 할인',weight:2,bg:'#D4A64A',fg:'#3B1A08',emoji:'👑',msg:'단 2% 확률의 대박 당첨!<br>계약 시 중개보수를 30% 할인해 드려요.<br><small>(할인 한도 등 세부 조건은 상담 시 안내)</small>',go:'👑 지금 당장 30% 할인 쿠폰 쓰러 가기!',jackpot:true}];
+{name:'무료 상권분석 상담',label:'📊<br>무료<br>상권분석',weight:45,bg:'#8E1020',fg:'#F6DD96',emoji:'📊',msg:'압구정로데오 상권, 50년 현장 경험으로<br>유동인구·임대료·업종까지 무료로 분석해 드려요.',go:'📊 지금 바로 무료 분석 예약하기!'},
+{name:'개업 축하 무료 홍보',rank:3,label:'🥉 3등<br>개업 축하<br>무료 홍보',weight:12,bg:'#EAD6AC',fg:'#3B2A1B',emoji:'📣',msg:'새 매장 오픈 소식을<br>로데오공인중개사무소가 무료로 홍보해 드려요.<br><small>(홍보 방법·일정은 상담 시 안내)</small>',go:'📣 지금 바로 무료 홍보 신청하기!'},
+{name:'상가 입주청소 할인',label:'🧹<br>상가<br>입주청소 할인',weight:15,bg:'#4E3420',fg:'#F6DD96',emoji:'🧹',msg:'오픈 전 반짝반짝하게!<br>제휴 업체 상가 입주청소를 할인가로 연결해 드려요.',go:'🧹 지금 바로 청소 할인 쿠폰 쓰러 가기!'},
+{name:'인테리어 무료 견적 + 할인',label:'🛠<br>인테리어<br>견적+할인',weight:15,bg:'#FBF3E2',fg:'#3B2A1B',emoji:'🛠',msg:'매장 인테리어 고민 끝!<br>제휴 업체 무료 견적에 할인 혜택까지 챙겨 드려요.',go:'🛠 지금 바로 인테리어 견적 받으러 가기!'},
+{name:'재계약 수수료 무료',rank:2,label:'🥈 2등<br>재계약<br>수수료 무료',weight:8,bg:'#6A0A16',fg:'#F6DD96',emoji:'🤝',msg:'다음 재계약 때<br>중개 수수료를 받지 않아요!<br><small>(대상 계약 등 세부 조건은 상담 시 안내)</small>',go:'🤝 지금 바로 재계약 무료 쿠폰 쓰러 가기!'},
+{name:'중개보수 30% 할인',rank:1,label:'👑 1등<br>중개보수<br>30% 할인',weight:5,bg:'#D4A64A',fg:'#3B1A08',emoji:'👑',msg:'1등 대박 당첨!<br>계약 시 중개보수를 30% 할인해 드려요.<br><small>(할인 한도 등 세부 조건은 상담 시 안내)</small>',go:'👑 지금 당장 30% 할인 쿠폰 쓰러 가기!',jackpot:true}];
 const N=prizes.length,SEG=360/N;
 const $=id=>document.getElementById(id);
 const wheel=$('wheel'),spin=$('spin'),out=$('result'),hist=$('history');let current=0,busy=false;
@@ -293,7 +294,7 @@ prizes.forEach((p,i)=>{const a=i*SEG+SEG/2,r=32,s=document.createElement('span')
 const box=$('wheelBox');for(let k=0;k<24;k++){const a=k*15*Math.PI/180,b=document.createElement('i');b.className='bulb'+(k%2?' alt':'');b.style.left=(50+54*Math.sin(a))+'%';b.style.top=(50-54*Math.cos(a))+'%';b.style.zIndex=2;box.appendChild(b)}
 function sparkle(parent,n,area){for(let k=0;k<n;k++){const s=document.createElement('i');s.className='spark';s.style.left=(area.x+Math.random()*area.w)+'%';s.style.top=(area.y+Math.random()*area.h)+'%';s.style.setProperty('--s',(10+Math.random()*16)+'px');s.style.setProperty('--d',(2+Math.random()*2.2)+'s');s.style.setProperty('--delay',(-Math.random()*4)+'s');parent.appendChild(s)}}
 sparkle($('head'),16,{x:8,y:0,w:84,h:70});sparkle(box,6,{x:-8,y:-8,w:116,h:116});
-$('weights').innerHTML=prizes.map(p=>`<div class="row"><span><i class="dot" style="background:${p.bg}"></i>${p.name}</span><strong>${p.weight}%</strong></div>`).join('');
+$('weights').innerHTML=prizes.map(p=>`<div class="row"><span><i class="dot" style="background:${p.bg}"></i>${p.rank?'<b style="color:var(--burg)">'+p.rank+'등</b> ':''}${p.name}</span><strong>${p.weight}%</strong></div>`).join('');
 function choosePrize(){const won=new Set(state.wins.map(w=>w.name));let pool=prizes.map((p,i)=>i).filter(i=>!won.has(prizes[i].name));if(!pool.length)pool=prizes.map((p,i)=>i);
  let n=Math.random()*pool.reduce((s,i)=>s+prizes[i].weight,0);for(const i of pool){n-=prizes[i].weight;if(n<0)return i}return pool[pool.length-1]}
 
@@ -359,7 +360,7 @@ function fireworks(sec,every){fxUntil=Date.now()+sec*1000;clearInterval(launcher
 const modal=$('modal');let lastFocus=null;
 function openModal(w){const p=byName(w.name),left=MAX-state.spins;
  modal.classList.toggle('jackpot',!!p.jackpot);
- $('mTag').textContent=p.jackpot?'👑 JACKPOT 👑':'✨ 축하합니다 ✨';$('mEmoji').textContent=p.emoji;
+ $('mTag').textContent=p.rank===1?'👑 1등 JACKPOT 👑':p.rank===2?'🥈 2등 당첨 🥈':p.rank===3?'🥉 3등 당첨 🥉':'✨ 축하합니다 ✨';$('mEmoji').textContent=p.emoji;
  $('mTitle').textContent=p.name+' 당첨!';$('mMsg').innerHTML=p.msg;$('mCode').textContent=w.code;$('mGo').textContent=p.go;
  $('mClose').textContent=left>0?`🎡 한 번 더 돌리기 (남은 기회 ${left}회)`:'닫기';
  lastFocus=document.activeElement;modal.hidden=false;document.body.style.overflow='hidden';setTimeout(()=>$('mGo').focus(),50)}
@@ -382,7 +383,7 @@ function doSpin(){
  setTimeout(()=>{run=false;const p=prizes[i];state.spins++;const w={name:p.name,code:newCode(),at:Date.now()};state.wins.unshift(w);save();
   show('🎉 '+p.name+' 당첨!',true);burst();busy=false;render();
   if(p.jackpot){const f=document.createElement('div');f.className='flash';document.body.appendChild(f);setTimeout(()=>f.remove(),1000)}
-  fanfare(p.jackpot);fireworks(p.jackpot?7:3.5,p.jackpot?380:650);
+  fanfare(p.rank<=2);fireworks(p.jackpot?7:p.rank===2?5:3.5,p.jackpot?380:p.rank===2?480:650);
   setTimeout(()=>openModal(w),450)},4200)}
 spin.addEventListener('click',doSpin);
 if(state.wins.length)show('지난 당첨: '+esc(state.wins[0].name));
